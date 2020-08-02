@@ -57,14 +57,14 @@ function Handle_Operator(Next_Operator) {
         //in the Perform_Calculation object and the function that matches the
         //operator is executed
         let result = Perform_Calculation[operator](Value_Now, Value_of_Input);
-        //here we add a fixed amount of numbers after the decimal
-        result = (result * 1).toString()
-        Calculator.Display_Value = (result);
+  
+        
+        Calculator.Display_Value = String(result);
         Calculator.First_Operand = result;
 
     }
     Calculator.Wait_Second_Operand = true;
-    Calculator.operator = Next_Operator
+    Calculator.operator = Next_Operator;
 
 }
 
@@ -73,7 +73,7 @@ const Perform_Calculation = {
     '*': (First_Operand, Second_Operand) => First_Operand * Second_Operand,
     '+': (First_Operand, Second_Operand) => First_Operand + Second_Operand,
     '-': (First_Operand, Second_Operand) => First_Operand - Second_Operand,
-    '=': (First_Operand, Second_Operand) => Second_Operand,
+    '=': (First_Operand, Second_Operand) => Second_Operand
 };
 
 function Calculator_Reset() {
@@ -96,7 +96,7 @@ keys.addEventListener('click', (event) => {
     //that was clicked
     const {target} = event;
     //if the element that was clicked on is not a button, exit the function
-    if (!target.matches("button")) {
+    if (!target.matches('button')) {
         return;
     }
 
